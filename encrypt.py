@@ -6,7 +6,7 @@ Created on Sun Apr 23 16:32:08 2017
 @author: noureldin
 """
 
-import random
+import random,sys
 
 
 def gcd(a,b):
@@ -50,3 +50,13 @@ def encrypt(m,n,S):
     X = get_X(n,p);
     return map(lambda x:[x,polynomial(x,C,p)],X),p;
 
+
+if __name__ == "__main__":
+    m,n,S = map(int,str(sys.argv[1]).split());
+    pairs,p = encrypt(m,n,S);
+    f = file("out.out","w");
+    for pair in pairs:
+        f.write("%d %d\n"%(pair[0],pair[1]));
+    f.write("%d\n"%p);
+    f.close();
+    print "this message is from encrypt.py";

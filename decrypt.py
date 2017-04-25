@@ -83,3 +83,19 @@ if __name__ == "__main__":
     print gaussian_elemenation(A,B,p);
     
  """
+
+import sys;
+import re;
+if __name__ == "__main__":
+    I = str(sys.argv[1]).split();
+    p = int(I[-1]);
+    pairs = map(lambda s:re.sub("\(*\)*\,*",' ',s).split(),I[:-1]);
+    pairs = map(lambda pair:map(int,pair),pairs);
+    message = "failed";
+    try:
+        message = get_message(pairs,p);
+    except:
+        pass;   
+    f = file("output.out","w");
+    f.write("%s\n"%message);
+    f.close();
